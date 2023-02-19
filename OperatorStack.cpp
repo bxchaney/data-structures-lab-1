@@ -3,11 +3,17 @@
 
 void OperatorStack::push_operator(char c, int scope)
 {
-    if (size == stack_max_size)
+    // Stack is empty
+    if (head == nullptr)
     {
-        resize();
+        head = new OperatorNode{c, scope, nullptr};
+        tail = head;
+        
     }
-    scope_stack[size] = OperatorScope{c, scope};
+    else 
+    {
+        head = new OperatorNode{c, scope, head};
+    }
     size++;
 }
 
@@ -17,7 +23,7 @@ int OperatorStack::peek_operator_scope()
     {
         return -1;
     }
-    return scope_stack[size - 1].operator_scope;
+    return head->operator_scope;
 
 }
 
@@ -28,22 +34,13 @@ char OperatorStack::pop_operator()
         return '\0';
     }
     size--;
-    return scope_stack[size].op;
+    OperatorNode* old_head = head;
+    head = head->next;
+    old_head->next = nullptr;
+    return old_head->operator_character;
 }
 
 bool OperatorStack::is_empty()
 {
     return size == 0;
-}
-
-void OperatorStack::resize()
-{
-    OperatorScope* old_arr = scope_stack;
-    stack_max_size *= 2;
-    scope_stack = new OperatorScope[stack_max_size];
-    for (int i=0; i < size; i++)
-    {
-        scope_stack[i] = old_arr[i];
-    }
-    delete old_arr;
 }

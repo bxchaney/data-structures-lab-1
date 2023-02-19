@@ -5,33 +5,41 @@
 class OperatorStack
 {
 
-    private: 
+    private:
 
-        struct OperatorScope
+        struct OperatorNode
         {
-            char op;
+            char operator_character;
             int operator_scope;
+            OperatorNode* next;
+
+            ~OperatorNode() 
+            {
+                if (next != nullptr)
+                {
+                    next->~OperatorNode();
+                    delete next;
+                }
+            }
         };
-
         
-        OperatorScope* scope_stack;
+        OperatorNode* head;
+        OperatorNode* tail;
         int size;
-        int stack_max_size;
-
-        void resize();
 
     public: 
 
         OperatorStack()
         {
+            head = nullptr;
+            tail = nullptr;
             size = 0;
-            stack_max_size = DEFAULT_STACK_SIZE;
-            scope_stack = new OperatorScope[DEFAULT_STACK_SIZE];
         }
 
         ~OperatorStack() 
         {
-            delete scope_stack;
+            tail = nullptr;
+            if (head != nullptr) head->~OperatorNode();
         }
 
         void push_operator(char c, int scope);
