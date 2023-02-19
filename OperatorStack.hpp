@@ -1,6 +1,4 @@
 #pragma once
-#define DEFAULT_STACK_SIZE 10
-
 
 class OperatorStack
 {
@@ -23,23 +21,24 @@ class OperatorStack
             }
         };
         
-        OperatorNode* head;
-        OperatorNode* tail;
-        int size;
+        OperatorNode* _head;
+        OperatorNode* _tail;
+        int _size;
 
     public: 
 
         OperatorStack()
         {
-            head = nullptr;
-            tail = nullptr;
-            size = 0;
+            _head = nullptr;
+            _tail = nullptr;
+            _size = 0;
         }
 
         ~OperatorStack() 
         {
-            tail = nullptr;
-            if (head != nullptr) head->~OperatorNode();
+            _tail = nullptr;
+            if (_head != nullptr) _head->~OperatorNode();
+            delete _head;
         }
 
         void push_operator(char c, int scope);

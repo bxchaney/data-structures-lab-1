@@ -4,17 +4,17 @@
 void OperatorStack::push_operator(char c, int scope)
 {
     // Stack is empty
-    if (head == nullptr)
+    if (_head == nullptr)
     {
-        head = new OperatorNode{c, scope, nullptr};
-        tail = head;
+        _head = new OperatorNode{c, scope, nullptr};
+        _tail = _head;
         
     }
     else 
     {
-        head = new OperatorNode{c, scope, head};
+        _head = new OperatorNode{c, scope, _head};
     }
-    size++;
+    _size++;
 }
 
 int OperatorStack::peek_operator_scope()
@@ -23,8 +23,7 @@ int OperatorStack::peek_operator_scope()
     {
         return -1;
     }
-    return head->operator_scope;
-
+    return _head->operator_scope;
 }
 
 char OperatorStack::pop_operator()
@@ -33,14 +32,14 @@ char OperatorStack::pop_operator()
     {
         return '\0';
     }
-    size--;
-    OperatorNode* old_head = head;
-    head = head->next;
+    _size--;
+    OperatorNode* old_head = _head;
+    _head = _head->next;
     old_head->next = nullptr;
     return old_head->operator_character;
 }
 
 bool OperatorStack::is_empty()
 {
-    return size == 0;
+    return _size == 0;
 }
