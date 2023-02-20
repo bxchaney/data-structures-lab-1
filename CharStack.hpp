@@ -24,5 +24,6 @@ class CharStack
         }
 
         void pushc(char c);
-        char* get_str();
+        const char* get_str();
+        void reset();
 };

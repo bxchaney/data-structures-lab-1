@@ -27,12 +27,17 @@ void CharStack::pushc(char c)
 /// @brief this method copies the current contents of the CharStack and returns
 /// a char pointer to the new copy.
 /// @return a pointer to a character string.
-char* CharStack::get_str()
+const char* CharStack::get_str()
 {
     char* string = new char[_size];
-    for (int i=0; i< _size; i++)
+    for (int i=0; i < _size; i++)
     {
         string[i] = _string[i];
     }
     return string;
+}
+
+void CharStack::reset()
+{
+    _size = 0;
 }
