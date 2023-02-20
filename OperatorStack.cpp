@@ -32,10 +32,12 @@ char OperatorStack::pop_operator()
     {
         return '\0';
     }
+
     _size--;
     OperatorNode* old_head = _head;
     _head = _head->next;
     old_head->next = nullptr;
+    if (is_empty()) _tail = nullptr;
     return old_head->operator_character;
 }
 
