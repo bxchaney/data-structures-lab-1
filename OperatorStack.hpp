@@ -37,8 +37,11 @@ class OperatorStack
         ~OperatorStack() 
         {
             _tail = nullptr;
-            if (_head != nullptr) _head->~OperatorNode();
-            delete _head;
+            if (_head != nullptr)
+            {  
+                _head->~OperatorNode();
+                delete _head;
+            }
         }
 
         void push_operator(char c, int scope);
