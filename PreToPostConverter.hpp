@@ -5,20 +5,28 @@
 class PreToPostConverter
 {
     private:
-        OperatorStack op_stack;
-        CharStack output;
-        int operands;
+        OperatorStack _op_stack;
+        CharStack _output;
+        int _operands;
+        bool _is_invalid;
 
 
     public:    
         PreToPostConverter()
         {
-            op_stack = OperatorStack();
-            output = CharStack();
-            operands = 0;
+            _op_stack = OperatorStack();
+            _output = CharStack();
+            _operands = 0;
+            _is_invalid = false;
+        }
+
+        ~PreToPostConverter()
+        {
+            _op_stack.~OperatorStack();
+            _output.~CharStack();
         }
 
         void next_character(char c);
-        char* get_output();
+        const char* get_output();
 
 };
