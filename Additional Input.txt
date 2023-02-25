@@ -1,0 +1,5 @@
++-+-+-+-ABCDEF-+-+GHIJKLM	
+A
+AB+
+-A+B-C+D-E+FG
++AB-C 
