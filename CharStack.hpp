@@ -18,12 +18,8 @@ class CharStack
             _size = 0;
         }
 
-        ~CharStack()
-        {
-            delete _string;
-        }
-
         void pushc(char c);
         const char* get_str();
         void reset();
+        int size();
 };
