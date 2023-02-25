@@ -10,6 +10,7 @@ class PreToPostConverter
         int _operands;
         bool _is_invalid;
 
+    void flush_stack();
 
     public:    
         PreToPostConverter()
@@ -28,5 +29,6 @@ class PreToPostConverter
 
         void next_character(char c);
         const char* get_output();
+        void reset();
 
 };
