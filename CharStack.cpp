@@ -29,15 +29,22 @@ void CharStack::pushc(char c)
 /// @return a pointer to a character string.
 const char* CharStack::get_str()
 {
+    if (_size == 0) return "";
     char* string = new char[_size];
     for (int i=0; i < _size; i++)
     {
         string[i] = _string[i];
     }
+    string[_size] = '\0';
     return string;
 }
 
 void CharStack::reset()
 {
     _size = 0;
+}
+
+int CharStack::size()
+{
+    return _size;
 }
