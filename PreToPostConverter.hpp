@@ -2,10 +2,11 @@
 #include"OperatorStack.cpp"
 #include"CharStack.cpp"
 
-class PreToPostConverter
+class FixConverter
 {
     private:
         OperatorStack _op_stack;
+        CharStack _input;
         CharStack _output;
         int _operands;
         bool _is_invalid;
@@ -13,18 +14,18 @@ class PreToPostConverter
     void flush_stack();
 
     public:    
-        PreToPostConverter()
+        FixConverter()
         {
             _op_stack = OperatorStack();
+            _input = CharStack();
             _output = CharStack();
             _operands = 0;
             _is_invalid = false;
         }
 
-        ~PreToPostConverter()
+        ~FixConverter()
         {
-            _op_stack.~OperatorStack();
-            _output.~CharStack();
+           // _op_stack.~OperatorStack();
         }
 
         void next_character(char c);

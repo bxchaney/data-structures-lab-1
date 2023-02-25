@@ -1,7 +1,7 @@
 #pragma once
-#include"PreToPostConverter.hpp"
+#include"FixConverter.hpp"
 
-void PreToPostConverter::flush_stack()
+void FixConverter::flush_stack()
 {
     while (!_op_stack.is_empty())
     {
@@ -9,7 +9,7 @@ void PreToPostConverter::flush_stack()
     }
 }
 
-void PreToPostConverter::next_character(char c)
+void FixConverter::next_character(char c)
 {
     if (c == '+' || c == '-' || c == '*' || c == '/' || c == '$' || c == '^')
     {
@@ -41,7 +41,7 @@ void PreToPostConverter::next_character(char c)
     }
 }
 
-const char* PreToPostConverter::get_output()
+const char* FixConverter::get_output()
 {
     if (_is_invalid)
     {
@@ -57,7 +57,7 @@ const char* PreToPostConverter::get_output()
     return _output.get_str();
 }
 
-void PreToPostConverter::reset()
+void FixConverter::reset()
 {
     _output.reset();
     flush_stack();
