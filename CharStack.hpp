@@ -5,7 +5,7 @@ is used internally by FixConverter to build new strings. It is also used to
 reverse strings to allow the added feture of conveting postfix expressions to
 prefix.
 
-This module supports the following interface:
+This module supports the following public interface:
 
 void pushc(char)
 
@@ -99,6 +99,7 @@ class CharStack
 
     public:
         CharStack();
+        ~CharStack();
 
         void pushc(char c);
         char popc();
