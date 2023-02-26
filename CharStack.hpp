@@ -11,12 +11,7 @@ class CharStack
         void resize();
 
     public:
-        CharStack()
-        {
-            _max_size = DEFAULT_STR_SIZE;
-            _string = new char[_max_size];
-            _size = 0;
-        }
+        CharStack();
 
         void pushc(char c);
         char popc();
