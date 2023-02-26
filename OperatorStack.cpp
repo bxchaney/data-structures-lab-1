@@ -1,6 +1,32 @@
 #pragma once
 #include "OperatorStack.hpp"
 
+OperatorStack::OperatorNode::~OperatorNode()
+{
+    if (next != nullptr)
+    {
+        next->~OperatorNode();
+        delete next;
+    }
+}
+
+OperatorStack::OperatorStack()
+{
+    _head = nullptr;
+    _tail = nullptr;
+    _size = 0;
+}
+
+OperatorStack::~OperatorStack()
+{
+    _tail = nullptr;
+    if (_head != nullptr)
+    {  
+        _head->~OperatorNode();
+        delete _head;
+    }
+}
+
 void OperatorStack::push_operator(char c, int scope)
 {
     // Stack is empty
