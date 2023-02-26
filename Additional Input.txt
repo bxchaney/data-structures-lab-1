@@ -3,3 +3,9 @@ A
 AB+
 -A+B-C+D-E+FG
 +AB-C 
++
+^^ABC
++|ABC
+%%%ABCD
+
+
