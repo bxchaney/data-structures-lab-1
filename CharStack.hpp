@@ -19,6 +19,8 @@ class CharStack
         }
 
         void pushc(char c);
+        char popc();
+        bool is_empty();
         const char* get_str();
         void reset();
         int size();
