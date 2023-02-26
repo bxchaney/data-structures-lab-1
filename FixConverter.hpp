@@ -146,17 +146,17 @@ const char* get_output_reversed()
 
     Output: the parsed output string reversed
 
-int output_length()
+int input_length()
 
     Input: None
 
     Precondition: None
 
-    Process: gets the number of items in the output string
+    Process: gets the number of items in the input string
 
     Postcondition: None
 
-    Output: the number of characters in the output string
+    Output: the number of characters in the input string
 
 void reset()
 
@@ -178,9 +178,9 @@ void reset()
 class FixConverter
 {
     private:
-        OperatorStack _op_stack;
-        CharStack _input;
-        CharStack _output;
+        OperatorStack _op_stack {};
+        CharStack _input {};
+        CharStack _output {};
         int _operands;
         bool _illegal_characters;
 
@@ -195,7 +195,7 @@ class FixConverter
         const char* get_input();
         const char* get_output();
         const char* get_output_reversed();
-        int output_length();
+        int input_length();
         void reset();
 
 };

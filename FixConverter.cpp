@@ -3,9 +3,6 @@
 
 FixConverter::FixConverter()
 {
-    _op_stack = OperatorStack();
-    _input = CharStack();
-    _output = CharStack();
     _operands = 0;
     _illegal_characters = false;
 }
@@ -144,9 +141,9 @@ const char* FixConverter::get_output_reversed()
     return str;
 }
 
-int FixConverter::output_length()
+int FixConverter::input_length()
 {
-    return _output.size();
+    return _input.size();
 }
 
 /// @brief resets the FixConverter to default state
