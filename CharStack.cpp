@@ -24,6 +24,22 @@ void CharStack::pushc(char c)
     _size++;
 }
 
+char CharStack::popc()
+{
+    if (is_empty())
+    {
+        return '\0';
+    }
+    char c = _string[_size - 1];
+    _size--;
+    return c;
+}
+
+bool CharStack::is_empty()
+{
+    return _size == 0;
+}
+
 /// @brief this method copies the current contents of the CharStack and returns
 /// a char pointer to the new copy.
 /// @return a pointer to a character string.
