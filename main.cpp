@@ -75,6 +75,9 @@ int main(int argc, char** argv)
     
     else 
     {
+        printf(
+            "Converting prefix expressions in %s to postfix and saving"
+            " results in %s\n", argv[1], argv[2]);
         while((c = fgetc(input)) != EOF)
         {
             // Ignoring register clears, spaces, and tabs
