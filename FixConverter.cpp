@@ -21,7 +21,15 @@ void FixConverter::flush_stack()
 void FixConverter::next_character(char c)
 {
     _input.pushc(c);
-    if (c == '+' || c == '-' || c == '*' || c == '/' || c == '$' || c == '^')
+    if (
+        c == '+' 
+        || c == '-' 
+        || c == '*' 
+        || c == '/' 
+        || c == '$' 
+        || c == '^'
+        || c == '%'
+       )
     {
         _op_stack.push_operator(c, _operands);
         return;
