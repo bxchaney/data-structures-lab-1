@@ -21,6 +21,7 @@ class FixConverter
         bool is_valid();
         const char* get_input();
         const char* get_output();
+        const char* get_output_reversed();
         int output_length();
         void reset();
 

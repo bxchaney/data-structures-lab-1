@@ -87,6 +87,19 @@ const char* FixConverter::get_output()
     return _output.get_str();
 }
 
+const char* FixConverter::get_output_reversed()
+{
+    if (_output.is_empty()) return "";
+    char* str = new char[_output.size()];
+    int i = 0;
+    while (!_output.is_empty())
+    {
+        str[i] = _output.popc();
+        i++;
+    }
+    return str;
+}
+
 int FixConverter::output_length()
 {
     return _output.size();
