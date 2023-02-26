@@ -33,7 +33,6 @@ bool is_equal_str(char* s, const char* str)
     }
 }
 
-
 int main(int argc, char** argv)
 {
     if (argc < 3) 
@@ -70,7 +69,67 @@ int main(int argc, char** argv)
     // to be converted to prefix.
     if (argc >= 4 && is_equal_str(argv[3],"-r"))
     {
-        
+        CharStack stack = CharStack();
+        bool converter_empty;
+        const char* input_str;
+        printf(
+            "Converting postfix expressions in %s to prefix and saving"
+            " results in %s\n", argv[1], argv[2]
+        );
+        while ((c = fgetc(input)) != EOF)
+        {
+            // ignoring register clears, spaces, tabs
+            if (c == 13 || c == 9 || c == 31)
+            {
+                continue;
+            }
+            // if we reach a newline character, process and write chars
+            if (c == 10)
+            {
+                input_str = stack.get_str();
+                while (!stack.is_empty()) 
+                {
+                    converter.next_character(stack.popc());
+                }
+                converter_empty = converter.output_length() == 0;
+                if (converter.has_illegal_characters())
+                {
+                    str = "This expression has illegal characters";
+                }
+                else if (!converter.is_valid())
+                {
+                    str = "This is not a valid postfix expression";
+                }
+                else 
+                {
+                    // this output needs to be reversed
+                    
+                    str = converter.get_output_reversed();
+                }
+
+                printf(
+                    "Input: %-20s Output: %-20s",
+                    input_str,
+                    str
+                );
+                if (!converter_empty)
+                {
+                    fputs(input_str, output);
+                    fputs(" -> ", output);
+                    fputs(str, output);
+                }
+                fputc(13, output);
+                fputc(c, output);
+                converter.reset();
+                stack.reset();
+                putchar(13);
+                putchar(c);
+            }
+            else
+            {
+                stack.pushc(c);
+            }
+        }
     }
     
     else 
@@ -84,7 +143,7 @@ int main(int argc, char** argv)
             if (c == 13 || c == 9 || c == 32) {
                 continue;
             }
-            // Once we read a newline character, 
+            // Once we read a newline character, process and write results
             if (c == 10) { 
                 
                 if (converter.has_illegal_characters())
