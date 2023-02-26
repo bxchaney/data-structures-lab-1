@@ -16,11 +16,6 @@ class FixConverter
     public:    
         FixConverter();
 
-        // ~FixConverter()
-        // {
-        //    // _op_stack.~OperatorStack();
-        // }
-
         void next_character(char c);
         bool has_illegal_characters();
         bool is_valid();
