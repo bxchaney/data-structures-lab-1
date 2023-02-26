@@ -72,8 +72,9 @@ bool CharStack::is_empty()
     return _size == 0;
 }
 
-/// @brief this method copies the current contents of the CharStack and returns
-/// a char pointer to the new copy.
+/// @brief this method copies the current contents of the CharStack and 
+/// returns a char pointer to the new copy. The returned character array is
+/// in the order that elements were added to CharStack
 /// @return a pointer to a character string.
 const char* CharStack::get_str()
 {
