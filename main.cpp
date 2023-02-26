@@ -68,7 +68,7 @@ int main(int argc, char** argv)
     const char* str;
     const char* input_str;
     FixConverter converter {};
-    fputs("Input -> Output", output);
+    fputs("Input -> Output\n", output);
     // -r flag indicates that the user is providing postfix expressions
     // to be converted to prefix.
     if (argc >= 4 && is_equal_str(argv[3],"-r"))
