@@ -1,0 +1,12 @@
+Input -> Output
++-+-+-+-ABCDEF-+-+GHIJKLM -> AB-C+D-E+F-GH+I-J+K-+L-M+
+A -> A
+AB+ -> This is not a valid prefix expression
+-A+B-C+D-E+FG -> ABCDEFG+-+-+-
++AB-C -> This is not a valid prefix expression
++ -> This is not a valid prefix expression
+^^ABC -> AB^C^
++|ABC -> This expression contains illegal characters
+%%%ABCD -> AB%C%D%
+
+

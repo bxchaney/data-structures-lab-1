@@ -1,0 +1,9 @@
+Input -> Output
+A -> A
+AB+ -> +AB
+ABC+- -> -A+BC
+AB-C+D-E+F%G^9* -> *^%+-+-ABCDEFG9
++AB -> This is not a valid postfix expression
+A+BC- -> This is not a valid postfix expression
++ -> This is not a valid postfix expression
+AB| -> This expression has illegal characters

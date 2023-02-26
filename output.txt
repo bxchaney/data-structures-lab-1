@@ -1,0 +1,18 @@
+Input -> Output
+-+ABC -> AB+C-
+-A+BC -> ABC+-
+$+-ABC+D-EF -> AB-C+DEF-+$
+-*A$B+C-DE*EF -> ABCDE-+$*EF*-
+**A+BC+C-BA -> ABC+*CBA-+*
+/A+BC+C*BA -> This is not a valid prefix expression
+*-*-ABC+BA -> This is not a valid prefix expression
+/+/A-BC-BA -> This is not a valid prefix expression
+*$A+BC+C-BA -> ABC+$CBA-+*
+//A+B0-C+BA -> AB0+/CBA+-/
+*$A^BC+C-BA -> ABC^$CBA-+*
+
+
+
+
+
+
