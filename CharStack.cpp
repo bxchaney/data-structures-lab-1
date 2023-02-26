@@ -15,7 +15,7 @@ CharStack::CharStack()
 CharStack::~CharStack()
 {
     // delete the array allocated to the heap.
-    delete _string;
+   delete _string;
 }
 
 /// @brief doubles max size, allocates new array with new max size, deletes
@@ -79,6 +79,7 @@ bool CharStack::is_empty()
 const char* CharStack::get_str()
 {
     if (_size == 0) return "";
+
     char* string = new char[_size];
     for (int i=0; i < _size; i++)
     {
