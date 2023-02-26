@@ -9,27 +9,24 @@ class FixConverter
         CharStack _input;
         CharStack _output;
         int _operands;
-        bool _is_invalid;
+        bool _illegal_characters;
 
     void flush_stack();
 
     public:    
-        FixConverter()
-        {
-            _op_stack = OperatorStack();
-            _input = CharStack();
-            _output = CharStack();
-            _operands = 0;
-            _is_invalid = false;
-        }
+        FixConverter();
 
-        ~FixConverter()
-        {
-           // _op_stack.~OperatorStack();
-        }
+        // ~FixConverter()
+        // {
+        //    // _op_stack.~OperatorStack();
+        // }
 
         void next_character(char c);
+        bool has_illegal_characters();
+        bool is_valid();
+        const char* get_input();
         const char* get_output();
+        int output_length();
         void reset();
 
 };

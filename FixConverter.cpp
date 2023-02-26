@@ -1,6 +1,15 @@
 #pragma once
 #include"FixConverter.hpp"
 
+FixConverter::FixConverter()
+{
+    _op_stack = OperatorStack();
+    _input = CharStack();
+    _output = CharStack();
+    _operands = 0;
+    _illegal_characters = false;
+}
+
 void FixConverter::flush_stack()
 {
     while (!_op_stack.is_empty())
@@ -11,6 +20,7 @@ void FixConverter::flush_stack()
 
 void FixConverter::next_character(char c)
 {
+    _input.pushc(c);
     if (c == '+' || c == '-' || c == '*' || c == '/' || c == '$' || c == '^')
     {
         _op_stack.push_operator(c, _operands);
@@ -27,7 +37,7 @@ void FixConverter::next_character(char c)
     }
     else
     {
-        _is_invalid = true;
+        _illegal_characters = true;
         return;
     }
 
@@ -41,26 +51,44 @@ void FixConverter::next_character(char c)
     }
 }
 
+bool FixConverter::has_illegal_characters()
+{
+    return _illegal_characters;
+}
+
+bool FixConverter::is_valid()
+{
+    // An expression is valid if the operator stack is empty at the end of
+    // processing and the number of operands is 1. We also have to the edge
+    // of processing empty lines of whitespace. Empty lines are not invalid
+    // so we return true in this case.
+
+    return (_op_stack.is_empty() && _operands <= 1);
+}
+
+const char* FixConverter::get_input()
+{
+    return _input.get_str();
+}
+
 const char* FixConverter::get_output()
 {
-    if (_is_invalid)
-    {
-        return "This expression contains illegal characters.";
-    }
+    
     if (_operands == 0) return "";
-
-    if (!_op_stack.is_empty() || _operands != 1)
-    {
-        return "This is not a valid prefix expression.";
-    }
 
     return _output.get_str();
 }
 
+int FixConverter::output_length()
+{
+    return _output.size();
+}
+
 void FixConverter::reset()
 {
+    _input.reset();
     _output.reset();
     flush_stack();
     _operands = 0;
-    _is_invalid = false;
+    _illegal_characters = false;
 }
